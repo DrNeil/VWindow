@@ -20,7 +20,12 @@ namespace VWindow
 		private async void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
 			CameraList.ItemsSource = await GetAllDevices();
-
+			Settings settings = new Settings();
+			string cameraID = settings.LoadLastSelectedCamera();
+			if (!string.IsNullOrEmpty(cameraID))
+			{
+				await SetCameraView(cameraID);
+			}
 		}
 
 		MediaFrameSourceInfo colorSourceInfo = null;
@@ -40,6 +45,13 @@ namespace VWindow
 		private async void CameraList_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			string selected = e.AddedItems[0].ToString();
+			await SetCameraView(selected);
+			Settings settings = new Settings();
+			settings.SaveCameraSelection(selected);
+		}
+
+		private async Task SetCameraView(string selected)
+		{
 			var device = await GetMediaDeviceGroup(selected);
 			MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
 			{
