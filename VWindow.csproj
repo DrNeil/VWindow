@@ -131,6 +131,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Frames\brown_closed_squarepanes.png" />
+    <Content Include="Assets\Frames\cottage.png" />
+    <Content Include="Assets\Frames\white_closed.png" />
     <Content Include="Assets\Frames\white_open.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
