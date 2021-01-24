@@ -56,8 +56,8 @@ namespace VWindow
 			MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
 			{
 				SourceGroup = device,
-				SharingMode = MediaCaptureSharingMode.ExclusiveControl,
-				MemoryPreference = MediaCaptureMemoryPreference.Cpu,
+				SharingMode = MediaCaptureSharingMode.SharedReadOnly ,
+				MemoryPreference = MediaCaptureMemoryPreference.Auto,
 				StreamingCaptureMode = StreamingCaptureMode.Video
 			};
 
