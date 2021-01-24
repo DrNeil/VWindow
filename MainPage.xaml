@@ -10,7 +10,9 @@
 
     <Grid>
         <CaptureElement x:Name="previewElement" HorizontalAlignment="Stretch" Visibility="Visible"/>
-        <Image x:Name="ImageView" />
+        
+        
+        <Image x:Name="FrameView" Stretch="Fill" Source="/Assets/Frames/white_open.png"  />
         <ComboBox x:Name="CameraList" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" 
                   Background="Transparent"
                   Height="40" SelectionChanged="CameraList_SelectionChanged" />
