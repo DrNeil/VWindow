@@ -15,11 +15,32 @@ namespace VWindow
 		{
 			this.InitializeComponent();
 			Loaded += MainPage_Loaded;
+			Application.Current.Suspending += App_Suspending;
+			Application.Current.Resuming += App_Resuming;
+		}
+
+		private async void App_Resuming(object sender, object e)
+		{
+			await ResumeLastView();
+		}
+
+		private async void App_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)
+		{
+			if (previewElement.Source is MediaCapture mediaCapture)
+			{
+				await mediaCapture.StopPreviewAsync();
+				
+			}
 		}
 
 		private async void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
 			CameraList.ItemsSource = await GetAllDevices();
+			await ResumeLastView();
+		}
+
+		private async Task ResumeLastView()
+		{
 			Settings settings = new Settings();
 			string cameraID = settings.LoadLastSelectedCamera();
 			if (!string.IsNullOrEmpty(cameraID))
@@ -56,8 +77,8 @@ namespace VWindow
 			MediaCaptureInitializationSettings settings = new MediaCaptureInitializationSettings
 			{
 				SourceGroup = device,
-				SharingMode = MediaCaptureSharingMode.SharedReadOnly ,
-				MemoryPreference = MediaCaptureMemoryPreference.Auto,
+				SharingMode = MediaCaptureSharingMode.SharedReadOnly,
+				MemoryPreference = MediaCaptureMemoryPreference.Cpu,
 				StreamingCaptureMode = StreamingCaptureMode.Video
 			};
 
