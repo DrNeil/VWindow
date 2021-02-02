@@ -65,6 +65,12 @@ namespace VWindow
 
 		private async void CameraList_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			if (previewElement.Source is MediaCapture mediaCapture)
+			{
+				await mediaCapture.StopPreviewAsync();
+				mediaCapture.Dispose();
+
+			}
 			string selected = e.AddedItems[0].ToString();
 			await SetCameraView(selected);
 			Settings settings = new Settings();
