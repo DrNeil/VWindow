@@ -28,8 +28,8 @@ namespace VWindow
 		{
 			if (previewElement.Source is MediaCapture mediaCapture)
 			{
+				previewElement.Source = null;
 				await mediaCapture.StopPreviewAsync();
-				
 			}
 		}
 
@@ -67,9 +67,9 @@ namespace VWindow
 		{
 			if (previewElement.Source is MediaCapture mediaCapture)
 			{
+				previewElement.Source = null;
 				await mediaCapture.StopPreviewAsync();
 				mediaCapture.Dispose();
-
 			}
 			string selected = e.AddedItems[0].ToString();
 			await SetCameraView(selected);
