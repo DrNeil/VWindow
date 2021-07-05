@@ -6,6 +6,7 @@ A virtual window showing a preview from a camera feed.
 I have a few old USB web cameras and thought I could put one to use. While I work at my desk it is nice to be able to quickly glance outside the front of the house when I hear a vehicle pull up, however my desk is not facing the window at the front of the building. Using a long USB extension cable I can glance at a window on my desktop and see the view outside my window.
 I decided to add a window frame to complete the illusion of looking out of the window.
 
+![screen shot of app running](screenshot.png)
 
 
 ## The Code
